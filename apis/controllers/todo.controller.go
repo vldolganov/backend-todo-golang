@@ -29,7 +29,7 @@ func AddTaskController(c *fiber.Ctx) error {
 func GetAllTasks(c *fiber.Ctx) error {
 	var todo = []models.Todo{}
 	var db = database.Connection
-	db.Find(&todo)
+	db.Order("id").Find(&todo)
 	return c.Status(fiber.StatusOK).JSON(todo)
 }
 
